@@ -1,31 +1,113 @@
 #include "main.h"
 
-/**
- * cap_string - capitalizes all words in a string
- * @s: string to capitalize
- * Return: address of s
- */
-char *cap_string(char *s)
-{
-        int i = 0, j;
-	char a[] = " \t\n,;.!?\"(){}";
 
-	while (*(s + i))
+
+/**
+
+ * seperator - checks if character is a seperator
+
+ * @c: character to be checked
+
+ * Return: if seperator return 1. Otherwise return 0;
+
+ */
+
+
+
+int separator(char c)
+
+{
+
+	/*Delcaring condition switch*/
+
+	switch (c)
+
 	{
-		if (*(s + i) >= 'a' && *(s + i) <= 'z')
-		{
-			if (i == 0)
-				*(s + i) -= 'a' - 'A';
-			else
-			{
-				for (j = 0; j <= 12; j++)
-				{
-					if (a[j] == *(s + i - 1))
-						*(s + i) -= 'a' - 'A';
-				}
-			}
-		}
-		i++;
+
+		case ' ':
+
+		case '\t':
+
+		case '\n':
+
+		case ',':
+
+		case ';':
+
+		case '.':
+
+		case '!':
+
+		case '?':
+
+		case '"':
+
+		case '(':
+
+		case ')':
+
+		case '{':
+
+		case '}':
+
+			return (1);
+
+
+
+		default:
+
+			return (0);
+
 	}
+
+}
+
+/**
+
+ * cap_string - capitalizes chars after given deliminators
+
+ * @s: string to uppercase
+
+ * Return: returns modified string
+
+ */
+
+char *cap_string(char *s)
+
+{
+
+	int count, upper;
+
+
+
+	upper = -32; /*value constant 32*/
+
+	count = 0;
+
+	/*Start WHILE*/
+
+	while (s[count] != '\0')
+
+	{
+
+		/*letters lowercase*/
+
+		if (s[count] >= 'a' && s[count] <= 'z')
+
+		{
+
+			/*Convert uppercase*/
+
+			if (s[count] == *s || separator(s[count - 1]))
+
+				s[count] += upper;
+
+		}
+
+		count++; /*Add count*/
+
+	}
+
 	return (s);
+
 }
