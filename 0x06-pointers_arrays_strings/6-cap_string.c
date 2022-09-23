@@ -1,130 +1,75 @@
 #include "main.h"
 
-<<<<<<< HEAD
 
 
 /**
 
- *cap_string - capitalizes every first letter of a word in a string.
+ * cap_string - capitalize all words of a string
 
- *separators of words are:  space, tabulation,
+ * @str: string
 
- * new line, ,, ;, ., !, ?, ", (, ), {, and }.
+ * Return: str
 
- *@s: pointer to string.
-
- *
-
- *Return: pointer to s.
-
-=======
-/**
- *cap_string - capitalizes every first letter of a word in a string.
- *separators of words are:  space, tabulation,
- * new line, ,, ;, ., !, ?, ", (, ), {, and }.
- *@s: pointer to string.
- *
- *Return: pointer to s.
->>>>>>> e5dc1464bb250e4b7a11a1071eec2ef465a9ba79
  */
 
-char *cap_string(char *s)
+
+
+char *cap_string(char *str)
 
 {
-<<<<<<< HEAD
 
-	int count;
+	int i, c;
 
+	int trigger;
 
-
-/*  scan through string */
-
-
-
-	count = 0;
+	char nots[] = ",;.!?(){}\n\t\" ";
 
 
 
-	while (s[count] != '\0')
+	for (i = 0, trigger = 0; str[i] != '\0'; i++)
 
+	{
 
+		if (str[0] > 96 && str[0] < 123)
 
-	{/* if next character after count is a char , capitalise it */
+			trigger = 1;
 
-
-
-		if (s[0] >= 97 && s[0] <= 122)
+		for (c = 0; nots[c] != '\0'; c++)
 
 		{
 
-			s[0] = s[0] - 32;
+			if (nots[c] == str[i])
+
+				trigger = 1;
 
 		}
 
-
-
-		if (s[count] == ' ' || s[count] == '\t' || s[count] == '\n'
-
-		    || s[count] == ',' || s[count] == ';' || s[count] == '.'
-
-		    || s[count] == '.' || s[count] == '!' || s[count] == '?'
-
-		    || s[count] == '"' || s[count] == '(' || s[count] == ')'
-
-		    || s[count] == '{' || s[count] == '}')
-
-
+		if (trigger)
 
 		{
 
-			if (s[count + 1] >= 97 && s[count + 1] <= 122)
+			if (str[i] > 96 && str[i] < 123)
 
 			{
 
-				s[count + 1] = s[count + 1] - 32;
+				str[i] -= 32;
+
+				trigger = 0;
 
 			}
 
-		}
+			else if (str[i] > 64 && str[i] < 91)
 
-		count++;
+				trigger = 0;
+
+			else if (str[i] > 47 && str[i] < 58)
+
+				trigger = 0;
+
+		}
 
 	}
 
-
-
-=======
-	int count;
-
-/*  scan through string */
-
-	count = 0;
-
-	while (s[count] != '\0')
-
-	{/* if next character after count is a char , capitalise it */
-
-		if (s[0] >= 97 && s[0] <= 122)
-		{
-			s[0] = s[0] - 32;
-		}
-
-		if (s[count] == ' ' || s[count] == '\t' || s[count] == '\n'
-		    || s[count] == ',' || s[count] == ';' || s[count] == '.'
-		    || s[count] == '.' || s[count] == '!' || s[count] == '?'
-		    || s[count] == '"' || s[count] == '(' || s[count] == ')'
-		    || s[count] == '{' || s[count] == '}')
-
-		{
-			if (s[count + 1] >= 97 && s[count + 1] <= 122)
-			{
-				s[count + 1] = s[count + 1] - 32;
-			}
-		}
-		count++;
-	}
-
->>>>>>> e5dc1464bb250e4b7a11a1071eec2ef465a9ba79
-	return (s);
+	return (str);
 
 }
