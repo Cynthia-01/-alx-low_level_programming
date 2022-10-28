@@ -7,7 +7,8 @@
  * @m: second number to convert to
  * Return: number of bits that was needed to flip
  */
-unsigned int flip_bits(unsigned long int n, unsigned long int m){
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
+{
 	unsigned int nbits;
 
 	for (nbits = 0; n || m; n >>= 1, m >>= 1)
