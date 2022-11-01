@@ -1,3 +1,8 @@
+/**
+ * File: 100-elf_header.c
+ * Auth: Cynthia Adinu
+ */
+
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -77,7 +82,7 @@ void print_class(unsigned char *e_ident)
 			printf("none\n");
 			break;
 		case ELFCLASS32:
-			printf("ELF64\n");
+			printf("ELF32\n");
 			break;
 		case ELFCLASS64:
 			printf("ELF64\n");
@@ -261,14 +266,13 @@ void close_elf(int elf)
 
 /**
  * main - Displays the information contained in the
- * ELF header at the start of an ELF file.
+ * ELF header at the start of an ELF file
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
- * Return: 0 on success.
- *
  * Description: If the file is not an ELF File or
  * the function fails - exit code 98.
+ * Return: 0 on success.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
@@ -309,6 +313,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_entry(header->e_entry, header->e_ident);
 
 	free(header);
-	close_elf(o);
+	close_elf(0);
 	return (0);
 }
