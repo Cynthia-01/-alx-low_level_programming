@@ -1,8 +1,8 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-*
-/*
+
+/**
  * main - prints the multiplication of two integers
  * @argc: argument count
  * @argv: argument vector
