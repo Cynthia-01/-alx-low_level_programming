@@ -13,14 +13,10 @@ int main(int argc, char *argv[])
 {
 	/*Declaring variables*/
 	int count = 0;
-
-	if (argc > 0)
+	for (count = 0; count < argc; count++)
 	{
-		/*WHILE - print each arguments*/
-		while (count < argc)
-		{
-			printf("%s\n", argv[count]);
-		}
+		printf("%s\n", argv[count]);
 	}
+
 	return (0);
 }
